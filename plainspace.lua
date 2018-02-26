@@ -1,4 +1,4 @@
-perspective = require("lib/perspective")
+local perspective = require("lib/perspective")
 local space = {scene={}}
 
 function space:new(o)
@@ -57,7 +57,7 @@ function space:start()
 end
 function space:draw()
  
-	screen = {w = 800,h=600}
+	local screen = {w = love.graphics.getWidth(),h= love.graphics.getHeight()}
 	table.sort(self.scene,function(a,b) return a.z < b.z end)
 	for i, plane in pairs(self.scene) do
 		if plane.z < -0.9 then --odd value but seems to fix glitches
